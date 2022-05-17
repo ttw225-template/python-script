@@ -54,7 +54,7 @@ test:
 
 ci-bundle: reformat lint analysis test
 
-clean: clean-build clean-pyc clean-test
+clean: clean-build clean-pyc clean-test clean-third-party
 
 clean-build:
 	rm -rf build/
@@ -72,3 +72,7 @@ clean-pyc:
 clean-test:
 	rm -rf .pytest_cache
 	rm -f .coverage
+
+clean-third-party:
+	rm -rf .mypy_cache
+	rm -rf db_cache.sqlite
