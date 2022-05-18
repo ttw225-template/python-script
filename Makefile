@@ -54,7 +54,8 @@ test:
 
 ci-bundle: reformat lint analysis test
 
-clean: clean-build clean-pyc clean-test clean-third-party
+build:
+	docker-compose build
 
 clean-build:
 	rm -rf build/
@@ -76,3 +77,5 @@ clean-test:
 clean-third-party:
 	rm -rf .mypy_cache
 	rm -rf db_cache.sqlite
+
+clean: clean-build clean-pyc clean-test clean-third-party

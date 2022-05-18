@@ -130,3 +130,6 @@ dmypy.json
 
 # ochrona tmp files
 db_cache.sqlite
+
+# Production Env Files
+production_env

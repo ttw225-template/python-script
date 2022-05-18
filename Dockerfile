@@ -23,5 +23,5 @@ RUN chown -R project:project /project
 USER project
 
 # Default Command
-ENTRYPOINT ["python3", "app.py"]
-CMD ["parameter"]
+ENTRYPOINT [ "python3", "app.py" ]
+CMD [ "parameter" ]
