@@ -25,8 +25,6 @@ black:
 	@echo [Reformat] Code Format
 	pipenv run black $(PKG)
 
-analysis: bandit ochrona
-
 lint: flake8 pylint mypy
 
 flake8:
@@ -41,9 +39,11 @@ mypy:
 	@echo [Linter] Type Check
 	pipenv run mypy $(PKG)/
 
+analysis: bandit ochrona
+
 bandit:
 	@echo [Analysis] Static Analysis
-	pipenv run bandit -r ${PKG}/ -x ${PKG}/tests/
+	pipenv run bandit -r ${PKG}/
 
 ochrona:
 	@echo [Analysis] Software Composition Analysis
@@ -77,5 +77,6 @@ clean-test:
 clean-third-party:
 	rm -rf .mypy_cache
 	rm -rf db_cache.sqlite
+	rm -rf pypi_cache.sqlite
 
 clean: clean-build clean-pyc clean-test clean-third-party
