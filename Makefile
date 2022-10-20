@@ -15,6 +15,18 @@ run:
 	@echo Run Project
 	pipenv run python3 -m $(PKG).app
 
+reformat: isort black
+
+isort:
+	@echo [Reformat] Sort Imports
+	pipenv run isort $(PKG)/
+
+black:
+	@echo [Reformat] Code Format
+	pipenv run black $(PKG)
+
+analysis: bandit ochrona
+
 lint: flake8 pylint mypy
 
 flake8:
@@ -28,18 +40,6 @@ pylint:
 mypy:
 	@echo [Linter] Type Check
 	pipenv run mypy $(PKG)/
-
-reformat: isort black
-
-isort:
-	@echo [Reformat] Sort Imports
-	pipenv run isort $(PKG)/
-
-black:
-	@echo [Reformat] Code Format
-	pipenv run black $(PKG) --skip-string-normalization -l 120
-
-analysis: bandit ochrona
 
 bandit:
 	@echo [Analysis] Static Analysis
