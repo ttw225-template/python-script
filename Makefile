@@ -35,7 +35,7 @@ flake8:
 
 pylint:
 	@echo [Linter] Style Check
-	pipenv run pylint $(PKG) --rcfile=setup.cfg
+	pipenv run pylint $(PKG)
 
 mypy:
 	@echo [Linter] Type Check
