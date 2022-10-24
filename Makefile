@@ -50,9 +50,9 @@ ochrona:
 	pipenv run ochrona
 
 test:
-	pipenv run python3 -m pytest -vv --cov-report=term-missing --cov=${PKG} ${PKG}/tests/
+	pipenv run python3 -m pytest -vv --cov-report=term-missing --cov=${PKG} tests/
 
-ci-bundle: reformat lint analysis test
+ci-bundle: reformat lint test analysis
 
 build:
 	docker-compose build
