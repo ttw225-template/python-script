@@ -1,0 +1,6 @@
+version: '3.4'
+services:
+  project:
+    build: .
+    container_name: PROJECT
+    env_file: ./production_env

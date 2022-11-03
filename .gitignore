@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ochrona tmp files
+db_cache.sqlite
+pypi_cache.sqlite
+
+# Production Env Files
+production_env
