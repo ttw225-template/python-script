@@ -1,4 +1,4 @@
-PKG=project
+PKG=src
 
 .PHONY: all clean version init flake8 pylint lint test coverage
 
