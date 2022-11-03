@@ -13,15 +13,15 @@ COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 RUN pipenv install --deploy --system
 
-# Copy project files
-COPY ./project /project
-WORKDIR /project
+# Copy src files
+COPY ./ /src
+WORKDIR /src
 
 # Create User
-RUN useradd -ms /bin/bash project
-RUN chown -R project:project /project
-USER project
+RUN useradd -ms /bin/bash user
+RUN chown -R user:user /src
+USER user
 
 # Default Command
 ENTRYPOINT [ "python3", "app.py" ]
-CMD [ "parameter" ]
+CMD [ "example_parameters" ]

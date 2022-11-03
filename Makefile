@@ -19,7 +19,7 @@ reformat: isort black
 
 isort:
 	@echo [Reformat] Sort Imports
-	pipenv run isort $(PKG)/
+	pipenv run isort $(PKG)
 
 black:
 	@echo [Reformat] Code Format
@@ -37,13 +37,13 @@ pylint:
 
 mypy:
 	@echo [Linter] Type Check
-	pipenv run mypy $(PKG)/
+	pipenv run mypy $(PKG)
 
 analysis: bandit ochrona
 
 bandit:
 	@echo [Analysis] Static Analysis
-	pipenv run bandit -r ${PKG}/
+	pipenv run bandit -r ${PKG}
 
 ochrona:
 	@echo [Analysis] Software Composition Analysis
