@@ -1,5 +1,5 @@
 import pytest
-from project.app import WonderBook
+from src.app import WonderBook
 
 
 class TestWonderBook:
