@@ -61,7 +61,12 @@ jobs:
         run: |
           pipenv --version
           pipenv install --deploy --dev
-      - name: tests
+      - name: Tests
         run: pipenv run python3 -m pytest -vv --cov-report=xml --cov=src tests/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          files: ./coverage.xml
+          flags: unittest
+          verbose: true
