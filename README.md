@@ -10,7 +10,7 @@ An easy to use template of Python script, include basic CI/CD settings.
 [![Checked with mypy](https://img.shields.io/badge/mypy-checked-blue)](http://mypy-lang.org/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Ochrona](https://img.shields.io/badge/secured_by-ochrona-blue)](https://ochrona.dev)
-
+[![codecov](https://codecov.io/gh/ttw225-template/python-script/branch/main/graph/badge.svg?token=E1DMSXTI77)](https://codecov.io/gh/ttw225-template/python-script)
 ---
 
 # Developing
