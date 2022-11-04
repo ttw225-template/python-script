@@ -62,6 +62,6 @@ jobs:
           pipenv --version
           pipenv install --deploy --dev
       - name: tests
-        run: pipenv run python3 -m pytest -vv --cov-report=term-missing --cov=${PKG} tests/
+        run: pipenv run python3 -m pytest -vv --cov-report=xml --cov=${PKG} tests/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
