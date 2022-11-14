@@ -40,7 +40,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pipenv --version
-          pipenv install --deploy --dev
+          pipenv install --deploy --system --dev
       - name: bandit
         run: bandit -r src
       - name: ochrona
@@ -60,7 +60,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pipenv --version
-          pipenv install --deploy --dev
+          pipenv install --deploy --system --dev
       - name: Tests
         run: pytest -vv --cov-report=xml --cov=src tests/
       - name: Upload coverage to Codecov
