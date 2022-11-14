@@ -14,7 +14,7 @@ COPY Pipfile.lock Pipfile.lock
 RUN pipenv install --deploy --system
 
 # Copy src files
-COPY ./ /src
+COPY ./src /src
 WORKDIR /src
 
 # Create User

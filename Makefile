@@ -1,6 +1,6 @@
 PKG=src
 
-.PHONY: all clean version init flake8 pylint lint test coverage
+.PHONY: all clean version init dev run reformat isort black flake8 pylint mypy lint analysis bandit ochrona test ci-bundle coverage build clean-build clean-pyc clean-test clean-third-party
 
 init: clean
 	@echo Install Environment
@@ -50,7 +50,7 @@ ochrona:
 	pipenv run ochrona
 
 test:
-	pipenv run python3 -m pytest -vv --cov-report=term-missing --cov=${PKG} tests/
+	pipenv run pytest -vv --cov-report=term-missing --cov=${PKG} tests/
 
 ci-bundle: reformat lint test analysis
 
