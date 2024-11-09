@@ -1,3 +1,30 @@
+[project]
+name = "python-script"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "loguru>=0.7.2",
+    "python-dotenv>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "bandit>=1.7.10",
+    "black>=24.10.0",
+    "flake8>=7.1.1",
+    "hypothesis>=6.118.0",
+    "isort>=5.13.2",
+    "mypy>=1.13.0",
+    "ochrona>=2.0.2",
+    "pylint>=3.3.1",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "pytest>=8.3.3",
+    "requests>=2.32.3",
+]
+
 [tool]
 [tool.commitizen]
 name = "cz_conventional_commits"
