@@ -24,11 +24,11 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: flake8
-        run: flake8
+        run: uv run flake8
       - name: pylint
-        run: pylint src
+        run: uv run pylint src
       - name: mypy
-        run: mypy src
+        run: uv run mypy src
 
   analysis:
     name: Analysis
@@ -50,9 +50,9 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: bandit
-        run: bandit -r src
+        run: uv run bandit -r src
       - name: ochrona
-        run: ochrona
+        run: uv run ochrona
 
   tests:
     name: Tests
@@ -74,7 +74,7 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: Tests
-        run: pytest -vv --cov-report=xml --cov=src tests/
+        run: uv run pytest -vv --cov-report=xml --cov=src tests/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
