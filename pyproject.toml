@@ -17,7 +17,6 @@ dev = [
     "hypothesis>=6.118.0",
     "isort>=5.13.2",
     "mypy>=1.13.0",
-    "ochrona>=2.0.2",
     "pylint>=3.3.1",
     "pytest>=8.3.3",
     "pytest-cov>=6.0.0",

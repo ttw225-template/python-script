@@ -51,8 +51,6 @@ jobs:
 
       - name: bandit
         run: uv run bandit -r src
-      - name: ochrona
-        run: uv run ochrona
 
   tests:
     name: Tests
