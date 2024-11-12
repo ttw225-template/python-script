@@ -1,21 +1,23 @@
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 # Setting Language Environment Variables
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
-# Update pip3 to the latest version
-RUN python3 -m pip install --upgrade pip
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Install dependencies
-RUN pip3 install --upgrade pipenv
-COPY Pipfile Pipfile
-COPY Pipfile.lock Pipfile.lock
-RUN pipenv install --deploy --system
-
-# Copy src files
-COPY ./src /src
+# Change the working directory to the `src` directory
 WORKDIR /src
+
+# Install dependencies and check if environment dependencies match uv.lock
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen
+
+# Copy the project into the image
+COPY ./src /src
 
 # Create User
 RUN useradd -ms /bin/bash user
@@ -23,5 +25,5 @@ RUN chown -R user:user /src
 USER user
 
 # Default Command
-ENTRYPOINT [ "python3", "app.py" ]
-CMD [ "example_parameters" ]
+ENTRYPOINT [ "uv", "run", "python3", "app.py" ]
+# CMD [ "example_parameters" ]

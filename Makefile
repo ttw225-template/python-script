@@ -50,7 +50,7 @@ test:
 ci-bundle: reformat lint test analysis
 
 build:
-	docker-compose build
+	docker compose build
 
 clean-build:
 	rm -rf build/
