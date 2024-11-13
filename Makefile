@@ -1,61 +1,56 @@
 PKG=src
 
-.PHONY: all clean version init dev run reformat isort black flake8 pylint mypy lint analysis bandit ochrona test ci-bundle coverage build clean-build clean-pyc clean-test clean-third-party
+.PHONY: all clean version init dev run reformat isort black flake8 pylint mypy lint analysis bandit test ci-bundle coverage build clean-build clean-pyc clean-test clean-third-party
 
 init: clean
 	@echo Install Environment
-	pipenv --python 3.10
-	pipenv install
+	uv sync
 
 dev: init
 	@echo Install Develop Environment
-	pipenv install --dev
+	uv sync
 
 run:
 	@echo Run Project
-	pipenv run python3 -m $(PKG).app
+	uv run python3 -m $(PKG).app
 
 reformat: isort black
 
 isort:
 	@echo [Reformat] Sort Imports
-	pipenv run isort $(PKG)
+	uv run isort $(PKG)
 
 black:
 	@echo [Reformat] Code Format
-	pipenv run black $(PKG)
+	uv run black $(PKG)
 
 lint: flake8 pylint mypy
 
 flake8:
 	@echo [Linter] Style Check
-	pipenv run flake8
+	uv run flake8
 
 pylint:
 	@echo [Linter] Style Check
-	pipenv run pylint $(PKG)
+	uv run pylint $(PKG)
 
 mypy:
 	@echo [Linter] Type Check
-	pipenv run mypy $(PKG)
+	uv run mypy $(PKG)
 
-analysis: bandit ochrona
+analysis: bandit
 
 bandit:
 	@echo [Analysis] Static Analysis
-	pipenv run bandit -r ${PKG}
-
-ochrona:
-	@echo [Analysis] Software Composition Analysis
-	pipenv run ochrona
+	uv run bandit -r ${PKG}
 
 test:
-	pipenv run pytest -vv --cov-report=term-missing --cov=${PKG} tests/
+	uv run pytest -vv --cov-report=term-missing --cov=${PKG} tests/
 
 ci-bundle: reformat lint test analysis
 
 build:
-	docker-compose build
+	docker compose build
 
 clean-build:
 	rm -rf build/
